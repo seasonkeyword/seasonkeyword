@@ -225,6 +225,7 @@ src="https://www.facebook.com/tr?id=1453866882815606&ev=PageView&noscript=1"
     // 버튼 클릭 시 모달 열기
     // 버튼 클릭 시 모달 열기 + GA4 이벤트 전송
     floatingBtn.addEventListener('click', function () {
+      fbq('track', 'Lead'); // Meta Pixel Lead 이벤트
       modalOverlay.classList.add('active');
       floatingBtn.style.display = 'none';
 
