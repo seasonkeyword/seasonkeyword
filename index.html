@@ -207,7 +207,7 @@
     // 버튼 클릭 시 모달 열기
     // 버튼 클릭 시 모달 열기 + GA4 이벤트 전송
     floatingBtn.addEventListener('click', function () {
-      fbq('track', 'Lead'); // Meta Pixel Lead 이벤트
+      if (typeof fbq === 'function') { fbq('track', 'Lead'); }
       modalOverlay.classList.add('active');
       floatingBtn.style.display = 'none';
 
@@ -236,19 +236,19 @@
   // 상단 이동 버튼 동작
     const scrollTopBtn = document.getElementById('scroll-top-btn');
 
-    // 스크롤 300px 이상 내려가면 버튼 표시
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 300) {
-        scrollTopBtn.style.display = 'flex';
-      } else {
-        scrollTopBtn.style.display = 'none';
-      }
-    });
+    if (scrollTopBtn) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) {
+          scrollTopBtn.style.display = 'flex';
+        } else {
+          scrollTopBtn.style.display = 'none';
+        }
+      });
 
-    // 클릭 시 상단으로 이동
-    scrollTopBtn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+      scrollTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
   </script>
 </body>
 </html>
